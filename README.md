@@ -4,8 +4,10 @@ This tutorial shall help setting up Unit Tests for your React Application.
 
 We will do Unit Testing on React Components and the Redux State within these 2 Stacks:
 
-- using Mocha and Chai (our own Stack)
-- using Jest (Create React App Starter Kit) plus Enzyme
+1. Mocha/Chai (our own Stack)
+
+2. Jest/Enzyme (Create React App Starter Kit: Jest is included)
+
 
 *Notes:*
 - Unit Tests on React Components should focus on Interactions (example: user clicks a button, or presses a key: then test if a function gets called with the right arguments) with React Components, NOT too much on the Structure of React Components. And surely NOT on the business logic of React Components as business logic should be pulled out of your React Components.
