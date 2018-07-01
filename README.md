@@ -31,7 +31,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 
 ## <a id="chapter1"></a>1. Getting started
 
-### The usual order of writing tests BEFORE delivering a new Software or Software Version to the client:
+### The usual order of writing tests BEFORE delivering a new software or software version to the client:
 
 1. Unit Tests:
     - A single piece of code (usually a function or a class/object) is tested, separate from other pieces.
