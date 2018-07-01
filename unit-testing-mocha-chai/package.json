@@ -1,0 +1,39 @@
+{
+  "name": "testing-with-webpack-and-chai-mocha",
+  "version": "1.0.0",
+  "description": "Great thanks to Stephen Grider's Redux Simple Starter Repo, and his Udemy Course 'Advanced React and Redux', which were the basis of this code",
+  "main": "index.js",
+  "repository": "git@github.com:herrkraatz/react-testing.git",
+  "scripts": {
+    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.dev.js",
+    "prod": "webpack --config webpack.config.prod.js && cp index.html dist && cp manifest.json dist && cp logo.svg dist && cp favicon.ico dist && cp -R style dist",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test:watch": "npm run test -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-jquery": "^2.0.0",
+    "jquery": "^3.3.1",
+    "jsdom": "^11.11.0",
+    "mocha": "^5.2.0",
+    "react-addons-test-utils": "^15.6.2",
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "babel-preset-stage-1": "^6.1.18",
+    "lodash": "^4.17.10",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.0"
+  }
+}

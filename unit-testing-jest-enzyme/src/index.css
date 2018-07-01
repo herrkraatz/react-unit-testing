@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.Test-container{
+  width: 50%;
+  margin: 10px auto 0;
+  /*margin-top: 10px;*/
+}
+
+ul{
+  width: 150px;
+  margin: 10px auto 0;
+}
