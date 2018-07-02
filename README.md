@@ -337,10 +337,22 @@ When done, run the tests:
 > npm run test
 ```
 
-The outcome will be:
+Jest will ask you:
 
 ```
-> npm run test
+Press `a` to run all tests, or run Jest with `--watchAll`.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
+```
+
+So press `a` to run all tests, and the outcome will be:
+
+```
  PASS  src/components/comment_box.test.js
   CommentBox
     ✓ has the correct class (36ms)
@@ -379,6 +391,9 @@ Ran all test suites.
 
 Watch Usage: Press w to show more.
 ```
+
+You are in watch mode now, which means that anytime you do a JavaScript code change in any file under root, 
+the test will automatically re-run. 
 
 If you want to see the overall coverage of files tested vs. NOT tested, add flag `--coverage` to package.json:
 
