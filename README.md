@@ -12,18 +12,30 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 *Notes:*
 - Unit Tests on Redux:
 
-    - Most Redux code are functions anyway, so you don't need to mock anything 
-    - Test your Reducers, Action Creators, and Connected Components:
-        - https://redux.js.org/recipes/writing-tests
-        - https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+    - Most Redux code are functions anyway, so you don't need to mock anything.
+    - Test your Action Creators, Reducers, and the resulting Application State by passing test values into them.
+    - Docs: https://redux.js.org/recipes/writing-tests
+    - Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
 - Unit Tests on React Components:
-    - Should focus on the Structure (Hierarchy, connected Classes), NOT on the business logic of your React Components as business logic should be pulled out of your React Components
-    - Jest Snapshots can help on testing Structure by saving time: 
-        - Testing on React Components' Outputs (Structure, NOT Interactions) through Snapshots (`npm install --save-dev react-test-renderer`)
-        - https://reactjs.org/docs/test-renderer.html
-        - https://github.com/facebook/react/tree/master/packages/react-test-renderer
+    - Should focus on bullet-proof answers of these questions:
+        - is component's content (hierarchy) rendered correctly (findable in DOM) and contains ALL necessary children?
+        - is component's content really NOT rendered if I wanted to hide it?
+        - are the right Props passed to the component?
+        - have passed Props the right impact?
+        - does the component's state update correctly?
+        - are CSS classes/selectors still attached to the component? 
+        - is Dynamic Styling working as expected?
+        - do lifecycle events work correctly, like componentDidMount, componentWillUnmount?
+        - Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
+    - Should NOT focus on the business logic of your React Components as business logic should be pulled out of your React Components.
+    - Jest Snapshots can save time by just comparing the rendered Outputs of Test A (current test) and Test B (test which ran immediately before):
+        - Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
+        - Installation: `npm install --save-dev react-test-renderer`
+        - Links:
+            - https://reactjs.org/docs/test-renderer.html
+            - https://github.com/facebook/react/tree/master/packages/react-test-renderer
         
-        Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
+        
 - Testing Interactions between Redux and React Components:
 
     - This is already an Integration Test, but:
@@ -57,12 +69,11 @@ This is the usual order of testing BEFORE delivering a new software or software 
     - Unit Tests are very helpful if you need to change your code: If your set of Unit Tests verify that your code works, you can safely change your code and have confidence that the other parts of your program will still work as expected.
     - Unit Tests wording can be used for documentation.
     - Save time because you don't have to always repeat manual testing after working on your code.
-    - Examples: 
+    - Examples (in general, not React specific): 
         - Testing a function without passing any argument
         - Testing a function by passing a wrong argument type
         - Passing the correct argument type to a function: Testing if the outcome is valid
         - Testing if function returns a valid JSON structure
-        - Testing UI Components: Component has the right hierarchy / classes attached
 
     TDD: TDD (Test-Driven Development / or Design) was developed out of Unit Testing:
     - Some quotes:
@@ -88,7 +99,7 @@ This is the usual order of testing BEFORE delivering a new software or software 
 2. Integration Tests: 
     - Not a single function like above, but logical groups (e.g. a login component, or a Service/API to handle authentication) are tested to see, if they (still) work together successfully.
     - To simulate user actions in Node.js, NOT needing a real browser, we will use jsdom module, which is a great DOM implementation in Node.js and gives us a "fake" DOM entirely in JavaScript to run our automated tests against.
-    - Examples: 
+    - Examples (Apps in general, not React specific): 
         - Testing if a login component running on a browser connects to a Service/API running on a server successfully.
         - Testing if a Service/API returns data from a database successfully.
         - Testing if a message component running in a progressive web app returns a success message from the database after writing to it.
@@ -98,7 +109,7 @@ This is the usual order of testing BEFORE delivering a new software or software 
     - The application should be tested with production data under real-time (stress) conditions against the test setup in order to do check performance as well. 
     - The name End-to-end means that the communication and data transfer of the application works as expected from the one end (the client interface) throughout the other end (the database or another client interface) and vice versa.
     - Also called System Test
-    - Examples: 
+    - Examples (Apps in general, not React specific):
         - Testing ALL Use Cases/User Stories:
             - User signs up, creating an account and getting Welcome message on screen / receiving an email to confirm.
             - User signs in, getting Welcome Back message and New Offers on screen. 
@@ -208,7 +219,7 @@ To add a watcher to always re-run all tests after a change in code:
 
 ### <a id="chapter2a1"></a>a. Unit Testing React Components
 
-As example we will dive into the Unit Test of the App Component and play with it.
+As example we will dive into the simple Unit Test of the App Component and play with it.
 
 Let's explore `test/components/app_test.js`:
 
@@ -239,7 +250,7 @@ describe('App', () => {
 });
 ```
 
-1. First we import the test_helper.js file to enable Mocha/Chai.
+1. First we import the test_helper.js file to enable Mocha/Chai and to render the Component.
 2. We need to also import `app.js` as well, but we leave it WITHOUT CommentList and CommentBox Components ...
  
     ```
@@ -272,9 +283,9 @@ describe('App', () => {
 3. Description of Chai commands:
 
     - The `describe('App', () => {});` command groups together different tests within the same context, for better readability.
-    - The `beforeEach(() => {})` command is called before EACH `it('attribute to test', () => {});` command is executed.
+    - The `beforeEach(() => {})` command is called before EACH test = `it('attribute to test', () => {});` command is executed.
     - The `it('shows comment box', () => {});` command groups together the final Unit Test(s).
-    - The `expect(component.find('.comment-box')).to.exist;` command executes the final Unit Test, testing our assertion (assertion) that, in this case, a CommentBox exists within our App Component. 
+    - The `expect(component.find('.comment-box')).to.exist;` command executes the final Unit Test, testing our assertion that, in this case, a CommentBox exists within our App Component. 
     - Check out http://chaijs.com/api/bdd for many many things you can test !
 
 
@@ -644,8 +655,11 @@ Jest/Enzyme:
     - https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
 
 Unit Tests Redux:
-- https://redux.js.org/recipes/writing-tests
-- https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+- Docs: https://redux.js.org/recipes/writing-tests
+- Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+
+Unit Tests React Components:
+- Example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
 
 Unit Tests General:
 - https://en.wikipedia.org/wiki/Unit_testing
@@ -665,7 +679,6 @@ Integration Tests:
 
 End-2-end Tests:
 - https://hackernoon.com/testing-your-frontend-code-part-iii-e2e-testing-e9261b56475
-- https://www.techopedia.com/definition/7035/end-to-end-test
 - https://medium.freecodecamp.org/why-end-to-end-testing-is-important-for-your-team-cb7eb0ec1504
 
 End-2-end Testing Tools:
