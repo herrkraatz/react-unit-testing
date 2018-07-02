@@ -36,6 +36,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 ### Testing in general
 
 Besides Unit Tests, there are Integration Tests, End-to-end Tests (E2E), and User Acceptance Tests.
+These are the main tests in software development. If you want to check out other tests, go here: https://en.wikipedia.org/wiki/Software_testing
  
 This is the usual order of testing BEFORE delivering a new software or software version to the client:
 
@@ -75,7 +76,7 @@ This is the usual order of testing BEFORE delivering a new software or software 
         - Testing if a message component running in a progressive web app returns a success message from the database after writing to it.
 
 3. End-to-end Tests (E2E):
-    - End-to-end Test make sure that all components of an application and all Third-Party Software work together as expected. 
+    - End-to-end Test make sure that ALL logical groups of an application and all Third-Party Software work together as expected. 
     - The application should be tested with production data under real-time (stress) conditions against the test setup in order to do check performance as well. 
     - The name End-to-end means that the communication and data transfer of the application works as expected from the one end (the client interface) throughout the other end (the database or another client interface) and vice versa.
     - Also called System Test
@@ -340,20 +341,75 @@ The outcome will be:
 
 ```
 > npm run test
- PASS  src/App.test.js
  PASS  src/components/comment_box.test.js
+  CommentBox
+    ✓ has the correct class (36ms)
+    ✓ has a text area (6ms)
+    ✓ has a button (2ms)
+    entering some text
+      ✓ shows that text in the textarea (9ms)
+      ✓ when submitted, clears the input (6ms)
+
+ PASS  src/App.test.js
+  App
+    ✓ shows comment box (15ms)
+    ✓ shows comment list (5ms)
+
  PASS  src/components/comment_list.test.js
- PASS  src/actions/index.test.js
+  CommentList
+    ✓ shows an LI for each comment (6ms)
+    ✓ shows each comment that is provided (3ms)
+
  PASS  src/reducers/comments.test.js
+  Comments Reducer
+    ✓ handles action with unknown type (2ms)
+    ✓ SAVE_COMMENT (1ms)
+
+ PASS  src/actions/index.test.js
+  actions
+    saveComment
+      ✓ has the correct type (3ms)
+      ✓ has the correct payload (1ms)
 
 Test Suites: 5 passed, 5 total
 Tests:       13 passed, 13 total
 Snapshots:   0 total
-Time:        1.732s, estimated 3s
+Time:        1.616s, estimated 2s
 Ran all test suites.
 
 Watch Usage: Press w to show more.
+```
 
+If you want to see the overall coverage of files tested vs. NOT tested, add flag `--coverage` to package.json:
+
+```
+"test": "react-scripts test --env=jsdom --verbose --coverage"
+```
+
+This will create a coverage folder under root.
+ 
+The additional output in the Terminal will look like this:
+
+```
+---------------------------|----------|----------|----------|----------|-------------------|
+File                       |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+---------------------------|----------|----------|----------|----------|-------------------|
+All files                  |    26.76 |     7.41 |    38.46 |    40.91 |                   |
+ src                       |     1.89 |        0 |     5.88 |      3.7 |                   |
+  App.js                   |      100 |      100 |      100 |      100 |                   |
+  index.js                 |        0 |        0 |        0 |        0 |... 6,7,8,10,12,18 |
+  registerServiceWorker.js |        0 |        0 |        0 |        0 |... 36,137,138,139 |
+ src/actions               |      100 |      100 |      100 |      100 |                   |
+  index.js                 |      100 |      100 |      100 |      100 |                   |
+  types.js                 |      100 |      100 |      100 |      100 |                   |
+ src/components            |      100 |      100 |      100 |      100 |                   |
+  comment_box.js           |      100 |      100 |      100 |      100 |                   |
+  comment_list.js          |      100 |      100 |      100 |      100 |                   |
+ src/reducers              |      100 |      100 |      100 |      100 |                   |
+  comments.js              |      100 |      100 |      100 |      100 |                   |
+  index.js                 |      100 |      100 |      100 |      100 |                   |
+---------------------------|----------|----------|----------|----------|-------------------|
+>
 ```
 
 ### <a id="chapter2b1"></a>a. Unit Testing React Components
@@ -471,6 +527,9 @@ End-2-end Tests:
 
 Acceptance Tests:
 - https://en.wikipedia.org/wiki/Acceptance_testing
+
+General:
+- https://en.wikipedia.org/wiki/Software_testing
 
 
 ### Credits to the authors of above links ! Thank you very much !
