@@ -23,7 +23,9 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
         - https://github.com/facebook/react/tree/master/packages/react-test-renderer
         
         Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
-- Testing Interactions between Redux and React Components is already an Integration Test
+- Testing Interactions between Redux and React Components:
+    - This is already an Integration Test, but:
+    - We will cover it below: [Integration Test between React Component and the Redux State](#chapter3) :-)
 
 ## Table of Contents
 
@@ -35,7 +37,8 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
     2. [Unit Testing with `Create React App` Starter Kit (Integrated: `Webpack`, `Babel`, `Jest`) plus `Enzyme`](#chapter2b)
         1. [Unit Testing React Components](#chapter2b1)
         2. [Unit Testing the Redux State](#chapter2b2)
-3. [Links](#chapter3)
+3. [Integration Test between React Component and the Redux State](#chapter3)
+4. [Links](#chapter4)
 
 
 ## <a id="chapter1"></a>1. Getting started
@@ -350,9 +353,9 @@ First install all dependencies:
 - enzyme-adapter-react-16
 - redux-mock-store
 
-`enzyme` and `enzyme-adapter-react-16` are modules of AirBnb and recommended by Facebook. They are needed to easier mount your React Components, also enabling to connect your Redux store.
+`enzyme` and `enzyme-adapter-react-16` are modules of AirBnb and recommended by Facebook. They are needed to easier mount your React Components, also enabling to connect your Redux Store.
 
-`redux-mock-store` will be installed to give you the option to use a mock Redux store, independent of your own Redux store. This may make sense in some scenarios. 
+`redux-mock-store` will be installed to give you the option to use a mock Redux Store, independent of your own Redux Store. This may make sense in some scenarios. 
 
 When done, run the tests:
 
@@ -522,7 +525,61 @@ describe('Comments Reducer', () => {
 });
 ```
 
-## <a id="chapter3"></a>3. Links
+## <a id="chapter3"></a>3. Integration Test between React Component and the Redux State
+
+In the previous Unit Tests you might have discovered some Integration Tests already (see `CommentBox Component`):
+
+Mocha/Chai:
+
+```
+describe('entering some text', () => {
+
+    beforeEach(() => {
+    
+        component.find('textarea').simulate('change', 'new comment');
+    });
+
+    it('shows that text in the textarea', () => {
+    
+        expect(component.find('textarea')).to.have.value('new comment');
+    });
+
+    it('when submitted, clears the input', () => {
+        
+        component.simulate('submit');
+        expect(component.find('textarea')).to.have.value('');
+    });
+});
+```
+
+Jest/Enzyme:
+
+```
+describe('entering some text', () => {
+
+    beforeEach(() => {
+
+        component.find('textarea').simulate('change', {target: {value: 'new comment'}});
+    });
+
+    test('shows that text in the textarea', () => {
+
+        expect(component.find('textarea').prop('value')).toEqual('new comment');
+    });
+
+    test('when submitted, clears the input', () => {
+
+        component.simulate('submit');
+        expect(component.find('textarea').prop('value')).toEqual('');
+    });
+});
+```
+
+Everything in React is a Component, also the Redux Store Provider. With Mocha/Chai and Jest/Enzyme we can render the entire React App in memory, and voilá: 
+
+We already have an Integration Test engine !!
+
+## <a id="chapter4"></a>4. Links
 
 ### Have a look !
 
