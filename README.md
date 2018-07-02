@@ -139,7 +139,6 @@ It will of course depend on your stack and your preference which framework to us
  
 *Note:*
 - For a list of other Unit Test JavaScript frameworks, see https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#JavaScript
-- Of course you are not bound to a JavaScript framework.
 
 ## <a id="chapter2a"></a>i. Unit Testing with Stack `Webpack`, `Babel`, `Mocha`, `Chai`
 
