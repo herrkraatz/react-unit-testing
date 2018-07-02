@@ -605,8 +605,8 @@ React Component >> Redux State >> React Component
 
 The reasons:
 - Everything in React is a Component, also the Redux Store Provider wrapped around our React Components. 
-- Mocha/Chai and Jest/Enzyme renders the entire React App in memory.
-- Within our Node.js Setup, `jsdom` module simulates a browser for us, to simulate (user) interactions.
+- Mocha/Chai and Jest/Enzyme render the entire React App into memory.
+- Within our Node.js Setup, `jsdom` module simulates a "fake" DOM for us, to simulate (user) interactions.
 
 Some manuals:
 - https://medium.freecodecamp.org/real-integration-tests-with-react-redux-and-react-router-417125212638
