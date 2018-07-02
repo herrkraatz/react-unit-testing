@@ -33,7 +33,11 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 
 ## <a id="chapter1"></a>1. Getting started
 
-### The usual order of writing tests BEFORE delivering a new software or software version to the client:
+### Testing in general
+
+Besides Unit Tests, there are Integration Tests, End-to-end Tests (E2E), and User Acceptance Tests.
+ 
+This is the usual order of testing BEFORE delivering a new software or software version to the client:
 
 1. Unit Tests:
     - A single piece of code (usually a function or a class/object) is tested, separate from other pieces.
@@ -41,7 +45,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
     - Unit Tests wording can be used for documentation.
     - Save time because you don't have to do manual testing after working on your code again and again. And again.
 
-    TDD: Unit Testing brings us to the terminology TDD (Test-Driven Development / or Design):
+    TDD: TDD (Test-Driven Development / or Design) was developed out of Unit Testing:
     - Some quotes:
         - "Keep it simple, stupid!" (KISS) 
         - "You aren't gonna need it!" (YAGNI)
@@ -57,14 +61,14 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
         - The difficult thing about TDD for many developers is that you have to write tests BEFORE writing any code.
         - If you're the client and the developer in one person, and you're not quite sure yet how your software should convince and appear to users, better focus on options, brainstorming, and branding than on writing test cases. 
 
-    BDD: TDD brings us to the terminology BDD (Behaviour-Driven Development / or Design):
+    BDD: BDD (Behaviour-Driven Development / or Design) was developed out of TDD:
     - Sets focus on User Stories and their scenarios/events.
     - Sets more focus on the wording for better understanding and documentation.
     - Therefore makes it easier to show test results to the business side to make the client happy - and yourself.
 
 2. Integration Tests: 
-    - Pieces of code (usually organized in components and Services/APIs) are tested as a group among themselves or tested against Third-Party Software (like a Database or Push Notification Service).
-    - To simulate user actions in a browser, we will use jsdom module, which is a great DOM implementation in Node.js and gives us a "fake" DOM entirely in JavaScript to run our automated tests against.
+    - Not a single function like above, but logical groups (e.g. a login component, or a Service/API to handle authentication) are tested to see, if they (still) work together successfully.
+    - To simulate user actions in Node.js, NOT needing a real browser, we will use jsdom module, which is a great DOM implementation in Node.js and gives us a "fake" DOM entirely in JavaScript to run our automated tests against.
     - Examples: 
         - Testing if a login component running on a browser connects to a Service/API running on a server successfully.
         - Testing if a Service/API returns data from a database successfully.
@@ -76,7 +80,8 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
     - The name End-to-end means that the communication and data transfer of the application works as expected from the one end (the client interface) throughout the other end (the database or another client interface) and vice versa.
     - Also called System Test
 
-### When all tests above are successful:
+
+#### When all tests above are successful:
  
 4. User Acceptance Tests:
     - The Client/Purchaser/Sponsor is involved.
