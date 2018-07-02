@@ -28,7 +28,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
         - do lifecycle events work correctly, like componentDidMount, componentWillUnmount?
         - Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
     - Should NOT focus on the business logic of your React Components as business logic should be pulled out of your React Components.
-    - Jest Snapshots can save time by just comparing the rendered Outputs of Test A (current test) and Test B (test which ran immediately before):
+    - Jest Snapshots can save time by just comparing the rendered Outputs of Test A (actual test) and Test B (test which ran immediately before):
         - Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
         - Installation: `npm install --save-dev react-test-renderer`
         - Links:
