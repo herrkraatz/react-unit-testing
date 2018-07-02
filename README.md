@@ -11,6 +11,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 
 *Notes:*
 - Unit Tests on Redux:
+
     - Most Redux code are functions anyway, so you don't need to mock anything 
     - Test your Reducers, Action Creators, and Connected Components:
         - https://redux.js.org/recipes/writing-tests
@@ -24,8 +25,9 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
         
         Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
 - Testing Interactions between Redux and React Components:
+
     - This is already an Integration Test, but:
-    - We will cover it below: [Integration Tests between React Component and the Redux State](#chapter3) :-)
+    - We will cover it shortly below: [Integration Tests between React Component and the Redux State](#chapter3) :-)
 
 ## Table of Contents
 
@@ -143,7 +145,7 @@ It will of course depend on your stack and your preference which framework to us
 
 ### A Note to Mocha/Chai:
 
-Mocha is the container in which Chai Code is running.
+Mocha is the container in which Chai code is running.
 
 ### Preparation
 
@@ -528,7 +530,9 @@ describe('Comments Reducer', () => {
 
 ## <a id="chapter3"></a>3. Integration Tests between React Component and the Redux State
 
-In the previous Unit Tests you might have discovered some Integration Tests already (see `CommentBox Component`):
+In the `CommentBox Component` and `CommentList Component` you might have discovered some Integration Tests already.
+ 
+Let's have a look at `CommentBox Component`:
 
 ### Mocha/Chai:
 
@@ -576,7 +580,16 @@ describe('entering some text', () => {
 });
 ```
 
-So we already have an Integration Test engine ready !!
+What happens here:
+
+1. `beforeEach(() => {})` injects the string `new comment` into the React Component's textarea BEFORE each following tests `test('...', () => {})` are executed.
+    This causes an Update of the Redux State and therefore causes a Re-Render of the React Component.
+2. Then we make an assertion whether the React Component got Re-Rendered as we expect within the `expect` statement. 
+3. The test will either pass or fail. In our case it will pass.
+
+So with Mocha/Chai and Jest/Enzyme we already have an Integration Test engine as we can accomplish even a full round-trip:
+
+React Component >> Redux State >> React Component
 
 The reasons:
 - Everything in React is a Component, also the Redux Store Provider wrapped around our React Components. 
