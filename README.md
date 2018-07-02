@@ -59,6 +59,7 @@ This is the usual order of testing BEFORE delivering a new software or software 
         - Testing a function without passing any argument
         - Testing a function by passing a wrong argument type
         - Passing the correct argument type to a function: Testing if the outcome is valid
+        - Testing if function returns a valid JSON structure
         - Testing UI Components: Component has the right hierarchy / classes attached
 
     TDD: TDD (Test-Driven Development / or Design) was developed out of Unit Testing:
@@ -575,15 +576,18 @@ describe('entering some text', () => {
 });
 ```
 
-Everything in React is a Component, also the Redux Store Provider. With Mocha/Chai and Jest/Enzyme we can render the entire React App in memory, and voilá: 
+So we already have an Integration Test engine ready !!
 
-We already have an Integration Test engine !!
+The reasons:
+- Everything in React is a Component, also the Redux Store Provider wrapped around our React Components. 
+- Mocha/Chai and Jest/Enzyme renders the entire React App in memory.
+- Within our Node.js Setup, `jsdom` module simulates a browser for us, to simulate (user) interactions.
 
 ## <a id="chapter4"></a>4. Links
 
 ### Have a look !
 
-Testing with React-Redux App: 
+Our React-Redux App: 
 - Stephen Grider, Repo: https://github.com/StephenGrider/AdvancedReduxCode
 - Stephen Grider, Udemy Course "Advanced React and Redux": https://www.udemy.com/react-redux-tutorial
 
@@ -595,15 +599,20 @@ Jest/Enzyme:
 - Jest: 
     - https://github.com/facebook/jest
     - http://jestjs.io/docs/en/expect.html#content
-- React Test Renderer (Jest Snapshot): 
+- Jest Snapshots (React Test Renderer):
     - https://reactjs.org/docs/test-renderer.html
     - https://github.com/facebook/react/tree/master/packages/react-test-renderer
 - Enzyme: https://airbnb.io/enzyme/docs/api/
 - Manuals:
     - https://www.sitepoint.com/test-react-components-jest/
     - https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests
+    - https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
 
-Unit Tests:
+Unit Tests Redux:
+- https://redux.js.org/recipes/writing-tests
+- https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+
+Unit Tests General:
 - https://en.wikipedia.org/wiki/Unit_testing
 - https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks#JavaScript
 - https://hackernoon.com/testing-your-frontend-code-part-ii-unit-testing-1d05f8d50859
@@ -623,7 +632,7 @@ End-2-end Tests:
 Acceptance Tests:
 - https://en.wikipedia.org/wiki/Acceptance_testing
 
-General:
+Testing General:
 - https://en.wikipedia.org/wiki/Software_testing
 
 
