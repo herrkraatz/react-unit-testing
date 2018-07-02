@@ -591,6 +591,8 @@ So with Mocha/Chai and Jest/Enzyme we already have an Integration Test engine as
 
 React Component >> Redux State >> React Component
 
+#### Isn't that great ?!
+
 The reasons:
 - Everything in React is a Component, also the Redux Store Provider wrapped around our React Components. 
 - Mocha/Chai and Jest/Enzyme renders the entire React App in memory.
@@ -608,12 +610,12 @@ Next step are End-to-end Tests. If you want to stay within Jest ecosystem, you c
 - Puppeteer (Headless Chrome Node API): https://github.com/GoogleChrome/puppeteer
 - Jest + Puppeteer: https://blog.logrocket.com/end-to-end-testing-react-apps-with-puppeteer-and-jest-ce2f414b4fd7
 
-Of course there are other Tools out there. Please also check
+Of course there are other tools out there. Please check them out as well:
 - Selenium
 - TestCafé and
 - Cypress 
 
-as well. You'll find the links in the link list below.
+You'll find the links in the link list below.
 
 Happy Testing !
 
