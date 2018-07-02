@@ -530,7 +530,7 @@ describe('Comments Reducer', () => {
 
 In the previous Unit Tests you might have discovered some Integration Tests already (see `CommentBox Component`):
 
-Mocha/Chai:
+### Mocha/Chai:
 
 ```
 describe('entering some text', () => {
@@ -553,7 +553,7 @@ describe('entering some text', () => {
 });
 ```
 
-Jest/Enzyme:
+### Jest/Enzyme:
 
 ```
 describe('entering some text', () => {
@@ -582,6 +582,22 @@ The reasons:
 - Everything in React is a Component, also the Redux Store Provider wrapped around our React Components. 
 - Mocha/Chai and Jest/Enzyme renders the entire React App in memory.
 - Within our Node.js Setup, `jsdom` module simulates a browser for us, to simulate (user) interactions.
+
+
+### What's next ?
+
+Next step are End-to-end Tests. If you want to stay within Jest ecosystem, you can think of adding Puppeteer as your browser engine for testing user interactions:
+- Puppeteer (Headless Chrome Node API): https://github.com/GoogleChrome/puppeteer
+- Jest + Puppeteer: https://blog.logrocket.com/end-to-end-testing-react-apps-with-puppeteer-and-jest-ce2f414b4fd7
+
+Of course there are other Tools out there. Please also check
+- Selenium
+- TestCafé and
+- Cypress 
+
+as well. You'll find the links in the link list below.
+
+Happy Testing !
 
 ## <a id="chapter4"></a>4. Links
 
@@ -628,6 +644,16 @@ End-2-end Tests:
 - https://hackernoon.com/testing-your-frontend-code-part-iii-e2e-testing-e9261b56475
 - https://www.techopedia.com/definition/7035/end-to-end-test
 - https://medium.freecodecamp.org/why-end-to-end-testing-is-important-for-your-team-cb7eb0ec1504
+
+End-2-end Testing Tools:
+- Selenium:
+    - https://www.fullstackreact.com/30-days-of-react/day-26/
+    - https://www.seleniumhq.org/
+- Jest + Puppeteer:
+    - Puppeteer (Headless Chrome Node API): https://github.com/GoogleChrome/puppeteer
+    - Jest + Puppeteer: https://blog.logrocket.com/end-to-end-testing-react-apps-with-puppeteer-and-jest-ce2f414b4fd7
+- TestCafé: https://github.com/DevExpress/testcafe
+- Cypress: https://www.cypress.io/
 
 Acceptance Tests:
 - https://en.wikipedia.org/wiki/Acceptance_testing
