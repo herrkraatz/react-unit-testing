@@ -25,7 +25,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
         Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
 - Testing Interactions between Redux and React Components:
     - This is already an Integration Test, but:
-    - We will cover it below: [Integration Test between React Component and the Redux State](#chapter3) :-)
+    - We will cover it below: [Integration Tests between React Component and the Redux State](#chapter3) :-)
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
     2. [Unit Testing with `Create React App` Starter Kit (Integrated: `Webpack`, `Babel`, `Jest`) plus `Enzyme`](#chapter2b)
         1. [Unit Testing React Components](#chapter2b1)
         2. [Unit Testing the Redux State](#chapter2b2)
-3. [Integration Test between React Component and the Redux State](#chapter3)
+3. [Integration Tests between React Component and the Redux State](#chapter3)
 4. [Links](#chapter4)
 
 
@@ -526,7 +526,7 @@ describe('Comments Reducer', () => {
 });
 ```
 
-## <a id="chapter3"></a>3. Integration Test between React Component and the Redux State
+## <a id="chapter3"></a>3. Integration Tests between React Component and the Redux State
 
 In the previous Unit Tests you might have discovered some Integration Tests already (see `CommentBox Component`):
 
@@ -582,6 +582,11 @@ The reasons:
 - Everything in React is a Component, also the Redux Store Provider wrapped around our React Components. 
 - Mocha/Chai and Jest/Enzyme renders the entire React App in memory.
 - Within our Node.js Setup, `jsdom` module simulates a browser for us, to simulate (user) interactions.
+
+Some manuals:
+- https://medium.freecodecamp.org/real-integration-tests-with-react-redux-and-react-router-417125212638
+- http://engineering.pivotal.io/post/react-integration-tests-with-enzyme/
+- https://medium.com/homeaway-tech-blog/integration-testing-in-react-21f92a55a894
 
 
 ### What's next ?
@@ -639,6 +644,10 @@ Unit Tests General:
 Integration Tests:
 - https://hackernoon.com/testing-your-frontend-code-part-iv-integration-testing-f1f4609dc4d9
 - https://github.com/jsdom/jsdom
+- Manuals:
+    - https://medium.freecodecamp.org/real-integration-tests-with-react-redux-and-react-router-417125212638
+    - http://engineering.pivotal.io/post/react-integration-tests-with-enzyme/
+    - https://medium.com/homeaway-tech-blog/integration-testing-in-react-21f92a55a894
 
 End-2-end Tests:
 - https://hackernoon.com/testing-your-frontend-code-part-iii-e2e-testing-e9261b56475
