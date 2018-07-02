@@ -1,6 +1,6 @@
 # React Unit Testing
 
-This tutorial shall help setting up Unit Tests for your React Application.
+This tutorial shall help setting up Unit Tests for your React/Redux Application.
 
 We will do Unit Testing on React Components and the Redux State within these 2 Stacks:
 
@@ -10,13 +10,20 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 
 
 *Notes:*
-- Unit Tests on React Components should focus on Interactions (example: user clicks a button, or presses a key: then test if a function gets called with the right arguments) with React Components, NOT too much on the Structure of React Components. And surely NOT on the business logic of React Components as business logic should be pulled out of your React Components.
-- Jest Snapshots: Save time on Testing on React Components' Outputs (Structure, NOT Interactions) through Snapshots (`npm install --save-dev react-test-renderer`)
-    - https://reactjs.org/docs/test-renderer.html
-    - https://github.com/facebook/react/tree/master/packages/react-test-renderer
-    
-    Jest will "complain" if the snapshot differs from previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
-
+- Unit Tests on Redux:
+    - Most Redux code are functions anyway, so you don't need to mock anything 
+    - Test your Reducers, Action Creators, and Connected Components:
+        - https://redux.js.org/recipes/writing-tests
+        - https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+- Unit Tests on React Components:
+    - Should focus on the Structure (Hierarchy, connected Classes), NOT on the business logic of your React Components as business logic should be pulled out of your React Components
+    - Jest Snapshots can help on testing Structure by saving time: 
+        - Testing on React Components' Outputs (Structure, NOT Interactions) through Snapshots (`npm install --save-dev react-test-renderer`)
+        - https://reactjs.org/docs/test-renderer.html
+        - https://github.com/facebook/react/tree/master/packages/react-test-renderer
+        
+        Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
+- Testing Interactions between Redux and React Components is already an Integration Test
 
 ## Table of Contents
 
@@ -44,7 +51,12 @@ This is the usual order of testing BEFORE delivering a new software or software 
     - A single piece of code (usually a function or a class/object) is tested, separate from other pieces.
     - Unit Tests are very helpful if you need to change your code: If your set of Unit Tests verify that your code works, you can safely change your code and have confidence that the other parts of your program will still work as expected.
     - Unit Tests wording can be used for documentation.
-    - Save time because you don't have to do manual testing after working on your code again and again. And again.
+    - Save time because you don't have to always repeat manual testing after working on your code.
+    - Examples: 
+        - Testing a function without passing any argument
+        - Testing a function by passing a wrong argument type
+        - Passing the correct argument type to a function: Testing if the outcome is valid
+        - Testing UI Components: Component has the right hierarchy / classes attached
 
     TDD: TDD (Test-Driven Development / or Design) was developed out of Unit Testing:
     - Some quotes:
@@ -80,6 +92,17 @@ This is the usual order of testing BEFORE delivering a new software or software 
     - The application should be tested with production data under real-time (stress) conditions against the test setup in order to do check performance as well. 
     - The name End-to-end means that the communication and data transfer of the application works as expected from the one end (the client interface) throughout the other end (the database or another client interface) and vice versa.
     - Also called System Test
+    - Examples: 
+        - Testing ALL Use Cases/User Stories:
+            - User signs up, creating an account and getting Welcome message on screen / receiving an email to confirm.
+            - User signs in, getting Welcome Back message and New Offers on screen. 
+            - User logs out, getting Good-Bye message.
+            - User adds item to shopping cart to prepare checkout and to continue shopping.
+            - User checks out.
+            - User cancels account.
+            - ...
+        - Testing Performance
+        - Testing Security
 
 
 #### When all tests above are successful:
