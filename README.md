@@ -15,7 +15,7 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
     - Most Redux code are functions anyway, so you don't need to mock anything.
     - Test your Action Creators, Reducers, and the resulting application state by passing test values/no values/wrong values into/through them.
     - Docs: https://redux.js.org/recipes/writing-tests
-    - Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+    
 - Unit Tests on React Components:
     - Should focus on bullet-proof answers of these questions:
         - is component's content (hierarchy) rendered correctly (findable in DOM) and contains ALL necessary children?
@@ -26,7 +26,8 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
         - are CSS classes/selectors attached to the component? 
         - is Dynamic Styling working as expected?
         - do lifecycle events work correctly, like componentDidMount, componentWillUnmount?
-        - Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
+        - and surely some more
+        
     - Should NOT focus on the business logic of your React Components as business logic should be pulled out of your React Components.
     - Jest Snapshots can save time by just comparing the rendered Outputs of Test A (actual test) and Test B (test which ran immediately before):
         - Jest will "complain/inform" if the snapshot differs from the previous test, so you will be reminded to doublecheck the differences and, if you did a change on purpose, you can run jest with the -u flag (to update the previous shapshot with the actual one).
@@ -322,6 +323,9 @@ describe('App', () => {
  
 5. Put back CommentList and CommentBox Components in `app.js` and all tests will again pass.
 
+For more Unit Tests on React Components, see
+- Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
+
 ### <a id="chapter2a2"></a>b. Unit Testing the Redux State
 
 As second example we'll check if our Reducer `src/reducers/comments.js` works correctly. 
@@ -329,8 +333,8 @@ We do it through test file `test/reducers/comments_test.js`:
 
 Here are 2 things we want to test:
 
-- Will reducer return an empty array as new state (an empty array to not to break anything) if we pass it a state of undefined ?
-- Will action-payload of 'new comment' really return 'new comment' as new state ?
+- Will reducer return an empty array as new state (an empty array to not to break anything) if we pass it a state of undefined?
+- Will action-payload of 'new comment' really return 'new comment' as new state?
 
 ```
 describe('Comments Reducer', () => {
@@ -349,6 +353,10 @@ describe('Comments Reducer', () => {
 
 });
 ```
+
+For more Unit Tests on Redux, see
+- Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+- Docs: https://redux.js.org/recipes/writing-tests
 
 ## <a id="chapter2b"></a>ii. Unit Testing with `Create React App` Starter Kit plus `Enzyme`
 
@@ -510,6 +518,9 @@ describe('App', () => {
 });
 ```
 
+Again, for more Unit Tests on React Components, see
+- Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
+
 ### <a id="chapter2b2"></a>b. Unit Testing the Redux State
 
 As second example again we'll check if our Reducer `src/reducers/comments.js` works correctly. 
@@ -537,6 +548,10 @@ describe('Comments Reducer', () => {
 
 });
 ```
+
+Again, for more Unit Tests on Redux, see
+- Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
+- Docs: https://redux.js.org/recipes/writing-tests
 
 ## <a id="chapter3"></a>3. Integration Tests between React Component and the Redux State
 
