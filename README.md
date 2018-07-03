@@ -324,7 +324,7 @@ describe('App', () => {
 5. Put back CommentList and CommentBox Components in `app.js` and all tests will again pass.
 
 For more Unit Tests on React Components, see
-- Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
+- https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
 
 ### <a id="chapter2a2"></a>b. Unit Testing the Redux State
 
@@ -519,7 +519,7 @@ describe('App', () => {
 ```
 
 Again, for more Unit Tests on React Components, see
-- Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
+- https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
 
 ### <a id="chapter2b2"></a>b. Unit Testing the Redux State
 
