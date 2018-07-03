@@ -13,17 +13,17 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
 - Unit Tests on Redux:
 
     - Most Redux code are functions anyway, so you don't need to mock anything.
-    - Test your Action Creators, Reducers, and the resulting Application State by passing test values into them.
+    - Test your Action Creators, Reducers, and the resulting application state by passing test values/no values/wrong values into/through them.
     - Docs: https://redux.js.org/recipes/writing-tests
     - Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
 - Unit Tests on React Components:
     - Should focus on bullet-proof answers of these questions:
         - is component's content (hierarchy) rendered correctly (findable in DOM) and contains ALL necessary children?
         - is component's content really NOT rendered if I wanted to hide it?
-        - are the right Props passed to the component?
         - have passed Props the right impact?
-        - does the component's state update correctly?
-        - are CSS classes/selectors still attached to the component? 
+        - are passed Props forwarded down to the component's child if the child is the recipient of the Props?
+        - is the component's state (NOT application state! This is Redux!) updated correctly and holds the right state after an event/passed Props?
+        - are CSS classes/selectors attached to the component? 
         - is Dynamic Styling working as expected?
         - do lifecycle events work correctly, like componentDidMount, componentWillUnmount?
         - Check out this example: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
