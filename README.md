@@ -324,7 +324,7 @@ describe('App', () => {
 5. Put back CommentList and CommentBox Components in `app.js` and all tests will again pass.
 
 For more Unit Tests on React Components, see
-- the other test files in `test` folder and
+- the other test files in `test/components` folder and
 - this great tutorial: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
 
 ### <a id="chapter2a2"></a>b. Unit Testing the Redux State
@@ -356,6 +356,7 @@ describe('Comments Reducer', () => {
 ```
 
 For more Unit Tests on Redux, see
+- the action creator test file `test/actions/index_test.js`
 - Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
 - Docs: https://redux.js.org/recipes/writing-tests
 
@@ -520,7 +521,7 @@ describe('App', () => {
 ```
 
 Again, for more Unit Tests on React Components, see
-- the other test files in `src` folder with suffix `.test.js` and
+- the other test files in `src/components` folder with suffix `.test.js` and
 - this great tutorial: https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22
 
 ### <a id="chapter2b2"></a>b. Unit Testing the Redux State
@@ -552,6 +553,7 @@ describe('Comments Reducer', () => {
 ```
 
 Again, for more Unit Tests on Redux, see
+- the action creator test file `src/actions/index.test.js`
 - Example: https://hackernoon.com/low-effort-high-value-integration-tests-in-redux-apps-d3a590bd9fd5
 - Docs: https://redux.js.org/recipes/writing-tests
 
