@@ -42,6 +42,11 @@ We will do Unit Testing on React Components and the Redux State within these 2 S
     - This is already an Integration Test, but:
     - We will cover it shortly below: [Integration Tests between React Component and the Redux State](#chapter3) :-)
 
+### IMPORTANT CAUTION: 
+The npm packages might have discovered vulnerabilities by now. 
+So do not use the combination of our npm versions in your production environment, but within a test environment instead that is sandboxed from your production network.
+Unfortunately the author has no time right now to always keep the npm packages at their latest versions and ensure that their combination still play successfully together. The tuturial is supposed to show how it works and should help building working prototypes to make life easier for you.
+
 ## Table of Contents
 
 1. [Getting started](#chapter1)
